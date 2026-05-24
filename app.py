@@ -3,9 +3,9 @@ import joblib
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 
-from src.backend.text_analysis.analyzer import TextAnalyzer
-from src.backend.models.scoring import MentalHealthScorer
-from src.backend.models.suggestions import SuggestionEngine
+from app.backend.text_analysis.analyzer import TextAnalyzer
+from app.backend.models.scoring import MentalHealthScorer
+from app.backend.models.suggestions import SuggestionEngine
 
 app = Flask(__name__)
 
