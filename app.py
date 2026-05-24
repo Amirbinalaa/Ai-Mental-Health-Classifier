@@ -4,9 +4,6 @@ import os
 import re
 import datetime
 import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 
 # Verify and import your original TextAnalyzer from analyzer.py
 try:
@@ -22,27 +19,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Download required NLTK data dependencies for text preprocessing on the server
-@st.cache_resource
-def download_nltk_data():
-    nltk.download('punkt', quiet=True)
-    nltk.download('stopwords', quiet=True)
-    nltk.download('wordnet', quiet=True)
-    nltk.download('omw-1.4', quiet=True)
-
-download_nltk_data()
-
-# 3. Text Preprocessing Pipeline (Identical to your optimized Jupyter Notebook)
+# 2. Setup text preprocessing pipeline matching the training environment data
 def preprocess_text(text):
     text = str(text).lower()
     # Remove URLs and links (essential to avoid web noise)
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
     # Remove special characters except letters and spaces
     text = re.sub(r'[^a-zA-Z\s]', '', text)
-    # Return directly without touching stop words or lemmatizer
+    # Return directly without touching stop words or lemmatizer to maintain vectorizer vocabulary
     return ' '.join(text.split())
 
-# 4. Load Models and Backend Analytics with Caching for Optimal Performance
+# 3. Load Models and Backend Analytics with Caching for Optimal Performance
 @st.cache_resource
 def load_components():
     model_path = "best_mental_health_model.pkl"
