@@ -1,0 +1,43 @@
+# AI Mental Health Monitor - Dependencies
+# Note: Some packages may require Microsoft Visual C++ 14.0 or greater
+# Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+# Core Web Application (install these first)
+flask==2.3.2
+streamlit==1.22.0
+
+# NLP Libraries - Minimal
+nltk==3.8.1
+
+# Machine Learning - Simplified
+scikit-learn==1.2.2
+pandas==2.0.0
+numpy==1.24.0
+matplotlib==3.7.1
+
+# Utilities
+python-dotenv==1.0.0
+tqdm==4.65.0
+requests==2.31.0
+
+# Optional AI Providers (install manually if needed)
+# google-generativeai>=0.1.0
+# openai==0.27.9
+
+# For Development
+pytest==7.3.1
+black==23.3.0
+flake8==6.0.0
+
+# Optional - Install these manually after installing Visual C++ Build Tools if needed
+# spacy==3.5.0
+# transformers>=4.30.0
+# librosa>=0.10.0
+# pyaudioanalysis>=0.3.14
+# soundfile>=0.12.1
+# tensorflow>=2.12.0
+# torch>=2.0.0
+
+# Deployment
+gunicorn==20.1.0
+joblib==1.3.2
