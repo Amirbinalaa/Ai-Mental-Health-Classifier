@@ -34,19 +34,13 @@ download_nltk_data()
 
 # 3. Text Preprocessing Pipeline (Identical to your optimized Jupyter Notebook)
 def preprocess_text(text):
-    lemmatizer = WordNetLemmatizer()
-    stop_words = set(stopwords.words('english'))
     text = str(text).lower()
-    
-    # Remove URLs and links
+    # Remove URLs and links (essential to avoid web noise)
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
-    # Remove special characters and numbers, keeping only alphabetic words
+    # Remove special characters except letters and spaces
     text = re.sub(r'[^a-zA-Z\s]', '', text)
-    
-    tokens = word_tokenize(text)
-    # Perform Lemmatization and remove stop words (ignoring tokens shorter than 3 letters)
-    tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words and len(word) > 2]
-    return ' '.join(tokens)
+    # Return directly without touching stop words or lemmatizer
+    return ' '.join(text.split())
 
 # 4. Load Models and Backend Analytics with Caching for Optimal Performance
 @st.cache_resource
