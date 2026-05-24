@@ -1,5 +1,7 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
+ENV HF_HOME=/root/.cache/huggingface
+ENV PORT=7860
 WORKDIR /app
 
 # Install system dependencies
